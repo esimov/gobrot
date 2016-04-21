@@ -12,7 +12,7 @@ Treating the real and imaginary parts of each number as image coordinates, pixel
 go get github.com/esimov/gobrot
 ```
 
-Before to run the code you need to include the project into the `GOPATH` environment variable. See https://golang.org/doc/code.html#GOPATH
+Before to run the code you need to include the project into the `GOPATH` environment variable. See the documentation: https://golang.org/doc/code.html#GOPATH
 ### Run
 
 ```
