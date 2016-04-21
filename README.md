@@ -1,5 +1,4 @@
-# gobrot
-Mandelbrot image renderer in Go
+## About
 
 This is a mandelbrot image renderer written in Go. It's using Go's concurrent and parallel programming feature called *goroutines*. The output is highly customizable and the rendered mandelbrot set color palette is very adaptive due to the various color palettes (these can be extended easily) and the interpolation algorithm used to blend these colors together.
 
@@ -47,7 +46,7 @@ By combining `-palette`, `-iteration` and `-step` values you can obtain differen
 ### TODO
 
 - Generate various images with a single command
-- Find dynamically the regions where a deep zoom will emarge new mandelbrot sets 
+- Find dynamically the regions where a deep zoom will emerge new mandelbrot sets 
 
 ### Resources
 
