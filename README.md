@@ -14,12 +14,15 @@ go get github.com/esimov/gobrot
 
 Before to run the code you need to include the project into the `GOPATH` environment variable. See the documentation: https://golang.org/doc/code.html#GOPATH
 ### Run
-
+```
+go run mandelbrot.go
+```
+<img src="https://raw.githubusercontent.com/esimov/gobrot/master/images/test5.jpg"/>
 ```
 go run mandelbrot.go --help
 ```
 
-This will give all the options supported by the renderer at the moment.
+Will give all the options supported by the renderer at the moment.
 
 Here are some options you can try out. (The attached images are generated using the below commands.)
 
