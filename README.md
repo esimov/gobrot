@@ -46,7 +46,7 @@ By combining `-palette`, `-iteration` and `-step` values you can obtain differen
 - Generate various images with a single command
 - Find dynamically the regions where a deep zoom will emarge new mandelbrot sets 
 
-### References
+### Resources
 
 - https://en.wikipedia.org/wiki/Mandelbrot_set
 - https://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/MandelbrotSetExterior
