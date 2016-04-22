@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/esimov/mandelbrot/palette"
+	"github.com/esimov/gobrot/palette"
 	"image"
 	"image/color"
 	"image/png"
@@ -149,11 +149,14 @@ func RenderBrot(maxIteration int, colors []color.RGBA, done chan struct{}) {
 				var y float64 = ymin + (ymax-ymin)*float64(iy)/float64(height-1)
 				norm, it := mandelIteration(x, y, maxIteration)
 				iteration := float64(maxIteration-it) + math.Log(norm)
-				color1 := colors[int(math.Abs(iteration))]
-				color2 := colors[int(math.Abs(iteration))+1]
-				color := linearInterpolation(RGBAToUint(color1), RGBAToUint(color2), uint32(iteration))
+				
+				if (int(math.Abs(iteration)) < len(colors)-1) {
+					color1 := colors[int(math.Abs(iteration))]
+					color2 := colors[int(math.Abs(iteration))+1]
+					color := linearInterpolation(RGBAToUint(color1), RGBAToUint(color2), uint32(iteration))
 
-				image.Set(ix, iy, Uint32ToRGBA(color))
+					image.Set(ix, iy, Uint32ToRGBA(color))
+				}
 			}
 		}(iy)
 	}
