@@ -1,4 +1,4 @@
-## About
+## Go Mandelbrot
 
 This is a mandelbrot image renderer written in Go. It's using Go's concurrent and parallel programming feature called *goroutines*. The output is highly customizable and the rendered mandelbrot set color palette is very adaptive due to the various color palettes (these can be extended easily) and the interpolation algorithm used to blend these colors together.
 
