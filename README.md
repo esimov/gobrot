@@ -43,6 +43,8 @@ go run mandelbrot.go -palette "Hippi" -xpos -0.00275 -ypos 0.78912 -radius .1256
 
 By combining `-palette`, `-iteration` and `-step` values you can obtain differently colorized mandelbrot sets.
 
+Read a more detailed description here: http://esimov.com/2016/04/mandelbrot-renderer-in-go
+
 ### TODO
 
 - Generate various images with a single command
