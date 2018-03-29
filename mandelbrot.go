@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/esimov/gobrot/palette"
 	"image"
 	"image/color"
 	"image/png"
@@ -11,6 +10,8 @@ import (
 	"os"
 	"sync"
 	"time"
+
+	"github.com/esimov/gobrot/palette"
 )
 
 var (
@@ -51,7 +52,6 @@ func main() {
 				fmt.Print(".")
 			case <-done:
 				ticker.Stop()
-				fmt.Print("Done!")
 				fmt.Printf("\n\nMandelbrot set rendered into `%s`\n", outputFile)
 			}
 		}
@@ -60,17 +60,16 @@ func main() {
 	if colorStep < float64(maxIteration) {
 		colorStep = float64(maxIteration)
 	}
-	colors := InterpolateColors(&colorPalette, colorStep)
-	fmt.Println("\n================================\n")
+	colors := interpolateColors(&colorPalette, colorStep)
 
 	if len(colors) > 0 {
 		fmt.Print("Rendering image...")
-		RenderBrot(maxIteration, colors, done)
+		render(maxIteration, colors, done)
 	}
 	time.Sleep(time.Second)
 }
 
-func InterpolateColors(paletteCode *string, numberOfColors float64) []color.RGBA {
+func interpolateColors(paletteCode *string, numberOfColors float64) []color.RGBA {
 	var factor float64
 	steps := []float64{}
 	cols := []uint32{}
@@ -130,7 +129,7 @@ func InterpolateColors(paletteCode *string, numberOfColors float64) []color.RGBA
 	return interpolatedColors
 }
 
-func RenderBrot(maxIteration int, colors []color.RGBA, done chan struct{}) {
+func render(maxIteration int, colors []color.RGBA, done chan struct{}) {
 	width = width * imageSmoothness
 	height = height * imageSmoothness
 	ratio := float64(height) / float64(width)
@@ -145,17 +144,17 @@ func RenderBrot(maxIteration int, colors []color.RGBA, done chan struct{}) {
 			defer waitGroup.Done()
 
 			for ix := 0; ix < width; ix++ {
-				var x float64 = xmin + (xmax-xmin)*float64(ix)/float64(width-1)
-				var y float64 = ymin + (ymax-ymin)*float64(iy)/float64(height-1)
+				var x = xmin + (xmax-xmin)*float64(ix)/float64(width-1)
+				var y = ymin + (ymax-ymin)*float64(iy)/float64(height-1)
 				norm, it := mandelIteration(x, y, maxIteration)
 				iteration := float64(maxIteration-it) + math.Log(norm)
-				
-				if (int(math.Abs(iteration)) < len(colors)-1) {
+
+				if int(math.Abs(iteration)) < len(colors)-1 {
 					color1 := colors[int(math.Abs(iteration))]
 					color2 := colors[int(math.Abs(iteration))+1]
-					color := linearInterpolation(RGBAToUint(color1), RGBAToUint(color2), uint32(iteration))
+					color := linearInterpolation(rgbaToUint(color1), rgbaToUint(color2), uint32(iteration))
 
-					image.Set(ix, iy, Uint32ToRGBA(color))
+					image.Set(ix, iy, uint32ToRgba(color))
 				}
 			}
 		}(iy)
@@ -192,11 +191,11 @@ func mandelIteration(cx, cy float64, maxIter int) (float64, int) {
 		y = 2*xy + cy
 	}
 
-	log_zn := (x*x + y*y) / 2
-	return log_zn, maxIter
+	logZn := (x*x + y*y) / 2
+	return logZn, maxIter
 }
 
-func RGBAToUint(color color.RGBA) uint32 {
+func rgbaToUint(color color.RGBA) uint32 {
 	r, g, b, a := color.RGBA()
 	r /= 0xff
 	g /= 0xff
@@ -205,7 +204,7 @@ func RGBAToUint(color color.RGBA) uint32 {
 	return uint32(r)<<24 | uint32(g)<<16 | uint32(b)<<8 | uint32(a)
 }
 
-func Uint32ToRGBA(col uint32) color.RGBA {
+func uint32ToRgba(col uint32) color.RGBA {
 	r := col >> 24 & 0xff
 	g := col >> 16 & 0xff
 	b := col >> 8 & 0xff
