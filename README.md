@@ -20,10 +20,7 @@ $ export PATH="$PATH:$GOPATH/bin"
 See the documentation: https://golang.org/doc/code.html#GOPATH
 
 ### Run
-
-```
-$ gobrot
-```
+Running `$ gobrot` will produce the following image:
 
 ![sample](https://raw.githubusercontent.com/esimov/gobrot/master/images/test5.jpg)
 
@@ -57,19 +54,19 @@ Usage of gobrot:
 Here are some options you can try out. (The attached images are generated using the below commands.)
 
 ```
-$ go run mandelbrot.go -palette "Hippi" -xpos -0.0091275 -ypos 0.7899912 -radius .01401245 -file "mandelbrot.png"
+$ gobrot -palette "Hippi" -xpos -0.0091275 -ypos 0.7899912 -radius .01401245 -file "mandelbrot.png"
 ```
 ```
-go run mandelbrot.go -palette "Plan9" -xpos -0.0091275 -ypos 0.7899912 -radius .01401245 -file "test2.png" -iteration 600 -step 600
+$ gobrot -palette "Plan9" -xpos -0.0091275 -ypos 0.7899912 -radius .01401245 -file "test2.png" -iteration 600 -step 600
 ```
 ```
-$ go run mandelbrot.go -palette "Vivid" -xpos -0.00991275 -ypos 0.7899912 -radius .02401245 -file "test3.png" -iteration 800 -step 600 -smoothness 10 -width 1920 -height 1080
+$ gobrot -palette "Vivid" -xpos -0.00991275 -ypos 0.7899912 -radius .02401245 -file "test3.png" -iteration 800 -step 600 -smoothness 10 -width 1920 -height 1080
 ```
 ```
-$ go run mandelbrot.go -palette "Hippi" -xpos -0.00275 -ypos 1.012 -radius .089999 -file "test4.png" -iteration 800 -step 600 -smoothness 10 -width 1920 -height 1080
+$ gobrot -palette "Hippi" -xpos -0.00275 -ypos 1.012 -radius .089999 -file "test4.png" -iteration 800 -step 600 -smoothness 10 -width 1920 -height 1080
 ```
 ```
-$ go run mandelbrot.go -palette "Hippi" -xpos -0.00275 -ypos 0.78912 -radius .1256789 -file "test5.png" -iteration 800 -step 6000 -smoothness 10 -width 1920 -height 1080
+$ gobrot -palette "Hippi" -xpos -0.00275 -ypos 0.78912 -radius .1256789 -file "test5.png" -iteration 800 -step 6000 -smoothness 10 -width 1920 -height 1080
 ```
 
 By combining `-palette`, `-iteration` and `-step` values you can obtain differently colorized mandelbrot sets.
