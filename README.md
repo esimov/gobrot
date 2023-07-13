@@ -8,7 +8,7 @@ Treating the real and imaginary parts of each number as image coordinates, pixel
 
 ### Install
 ```
-$ go get github.com/esimov/gobrot
+$ go get github.com/teadove/gobrot
 $ go install
 ```
 
