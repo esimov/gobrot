@@ -54,22 +54,24 @@ func (s *Service) InterpolateColors(paletteCode *string, numberOfColors float64)
 		}
 
 		var min, max, minColor, maxColor float64
-		if len(v.Colors) == len(steps) && len(v.Colors) == len(cols) {
-			for i := 0.0; i <= 1; i += factor {
-				for j := 0; j < len(v.Colors)-1; j++ {
-					if i >= steps[j] && i < steps[j+1] {
-						min = steps[j]
-						max = steps[j+1]
-						minColor = float64(cols[j])
-						maxColor = float64(cols[j+1])
-						uintColor := cosineInterpolation(
-							maxColor,
-							minColor,
-							(i-min)/(max-min),
-						)
-						interpolated = append(interpolated, uint32(uintColor))
-					}
+		if !(len(v.Colors) == len(steps) && len(v.Colors) == len(cols)) {
+			continue
+		}
+		for i := 0.0; i <= 1; i += factor {
+			for j := 0; j < len(v.Colors)-1; j++ {
+				if !(i >= steps[j] && i < steps[j+1]) {
+					continue
 				}
+				min = steps[j]
+				max = steps[j+1]
+				minColor = float64(cols[j])
+				maxColor = float64(cols[j+1])
+				uintColor := cosineInterpolation(
+					maxColor,
+					minColor,
+					(i-min)/(max-min),
+				)
+				interpolated = append(interpolated, uint32(uintColor))
 			}
 		}
 
