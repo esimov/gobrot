@@ -8,7 +8,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/teadove/gobrot/internal/palette"
+	"github.com/esimov/gobrot/internal/palette"
 )
 
 type Service struct {

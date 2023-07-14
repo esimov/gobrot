@@ -5,7 +5,6 @@ BUILD_OUTPUT ?= gobrot
 GO ?= GO111MODULE=on CGO_ENABLED=0 go
 GOOS ?= $(shell $(GO) version | cut -d' ' -f4 | cut -d'/' -f1)
 GOARCH ?= $(shell $(GO) version | cut -d' ' -f4 | cut -d'/' -f2)
-DOCKER_IMAGE ?= ghcr.io/teadove/fun-telegram:$(BUILD_VERSION)
 
 run:
 	@$(GO) run main.go
@@ -16,7 +15,7 @@ build:
 clean:
 	@echo -n ">> CLEAN"
 	@$(GO) clean -i ./...
-	@rm -f goteleout-*-*
+	@rm -f esimov-*-*
 	@rm -rf dist/*
 	@printf '%s\n' '$(OK)'
 

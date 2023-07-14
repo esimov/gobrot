@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/teadove/gobrot/internal/brot"
+	"github.com/esimov/gobrot/internal/brot"
 )
 
 var service brot.Service
