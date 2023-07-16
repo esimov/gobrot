@@ -8,9 +8,9 @@ Treating the real and imaginary parts of each number as image coordinates, pixel
 
 ### Install
 ```
-$ go get github.com/esimov/gobrot
-$ go install
+$ go install github.com/esimov/gobrot@latest
 ```
+or just download latest from release page
 
 Before to run the code you need to include the project into the `GOPATH` environment variable. 
 ```
