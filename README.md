@@ -10,14 +10,6 @@ Treating the real and imaginary parts of each number as image coordinates, pixel
 ```
 $ go install github.com/esimov/gobrot@latest
 ```
-or just download latest from release page
-
-Before to run the code you need to include the project into the `GOPATH` environment variable. 
-```
-$ export GOPATH="$HOME/go"
-$ export PATH="$PATH:$GOPATH/bin"
-```
-See the documentation: https://golang.org/doc/code.html#GOPATH
 
 ### Run
 Running `$ gobrot` will produce the following image:
